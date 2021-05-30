@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block body %}
+    {#    <h1>Service index</h1>#}
+
+    {#    <table class="table">#}
+    {#        <thead>#}
+    {#            <tr>#}
+    {#                <th>Id</th>#}
+    {#                <th>Libelle</th>#}
+    {#                <th>Description</th>#}
+    {#                <th>Datedeb</th>#}
+    {#                <th>Datefin</th>#}
+    {#                <th>Technologie</th>#}
+    {#                <th>actions</th>#}
+    {#            </tr>#}
+    {#        </thead>#}
+    {#        <tbody>#}
+
+    <h1 class="deepshd">Services En Conseil En Marketing </h1>
+    {% if is_granted('ROLE_DIRECTEUR') %}
+        <div class="col-xl-12" id="create-topic">
+
+            <a href="{{ path("service_new") }}"><p><b>➕</b> Ajouter un service</p></a>
+        </div>
+    {% endif %}
+    {% for service in services %}
+        {% if service.familleService == 'Conseil En Marketing' %}
+            {% if is_granted('ROLE_DIRECTEUR') %}
+                <a href="{{ path('service_show', {'id': service.id}) }}">show</a>
+                <a href="{{ path('service_edit', {'id': service.id}) }}">Modifier</a>
+            {% endif %}
+
+
+            {#            <tr>#}
+            {#                <td>{{ service.id }}</td>#}
+            {#                <td>{{ service.libelle }}</td>#}
+            {#                <td>{{ service.description }}</td>#}
+            {#                <td>{{ service.datedeb ? service.datedeb|date('Y-m-d') : '' }}</td>#}
+            {#                <td>{{ service.datefin ? service.datefin|date('Y-m-d') : '' }}</td>#}
+            {#                <td>{{ service.technologie }}</td>#}
+            {#                <td>#}
+            {#                    <a href="{{ path('service_show', {'id': service.id}) }}">show</a>#}
+            {#                    <a href="{{ path('service_edit', {'id': service.id}) }}">edit</a>#}
+            {#                </td>#}
+            {#            </tr>#}
+            {#        {% else %}#}
+            {#            <tr>#}
+            {#                <td colspan="7">no records found</td>#}
+            {#            </tr>#}
+            {#            <h1>hi prod</h1>#}
+
+
+            {#        </tbody>#}
+            {#    </table>#}
+
+
+
+
+
+
+
+
+
+            <div id="btn" style="margin-right: 400px ; border-bottom: black ">
+                <div class="wrap noselect">
+                    <header>
+                        <h1  class="article-title ">{{ service.libelle }}</h1>
+                        <h2 class="author">by SLIM <span>JERBIA</span></h2>
+                        {#            <br/> <p style="margin-left: 20px">   De {{ experience.DateFrom ? experience.DateFrom|date('Y-m-d') : '' }} à {{ experience.DateTo ? experience.DateTo|date('Y-m-d') : '' }}#}
+
+                        <h2 class="author">Debut d'experience : {{ service.dateDeb ? service.dateDeb|date('Y-m-d') : '' }}</h2>
+                        <h2 class="author">Fin d'experience : {{ service.dateFin ? service.dateFin|date('Y-m-d') : '' }}</h2>
+
+                    </header>
+                    <div id="content" class="content">
+                        <p >{{ service.description }}</p>
+                    </div></div>
+
+            </div>
+            <br/>            {% endif %}
+    {% endfor %}
+{% endblock %}

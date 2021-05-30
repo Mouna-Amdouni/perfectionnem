@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Experience index{% endblock %}
+
+{% block body %}
+{#    <a href="{{ path('Completer',{'idDirecteur':app.user.id})}}">Completer votre profil</a>#}
+
+    <a href="{{ path('experience_new',{'idDirecteur':app.user.id})}}">Ajouter une nouvelle experience</a>
+
+    {% for experience in experiences %}
+        <div class="bg-light border-bottom" style="width: 100% ;border-radius:10% ">
+<br/>
+           <div style="margin-left: 90%">  <p>
+               <a href="{{ path('experience_show', {'id': experience.id}) }}"><i class="fas fa-eye"></i></a>
+
+                   <a href="{{ path('experience_edit', {'id': experience.id}) }}"><i class="fas fa-edit"></i></a>
+               </p>
+
+           </div>
+               <br/> <p style="margin-left: 20px">   De {{ experience.DateFrom ? experience.DateFrom|date('Y-m-d') : '' }} à {{ experience.DateTo ? experience.DateTo|date('Y-m-d') : '' }}
+                <br/> Location : {{ experience.Location }}
+                <br/>
+                Societé   : <a href="{{experience.lienSociete}}">{{ experience.societe }}</a><br/>
+                {{ experience.description }}<br/>
+                <a href="{{ experience.lienDescription }}"  > lien Description </a>
+
+
+            </p>
+        </div>
+        <br/>
+
+
+
+    {% endfor %}
+
+{#    <table class="table table-striped">#}
+{#        <thead>#}
+{#            <tr >#}
+{#                <th>Id</th>#}
+{#                {% if is_granted('ROLE_VISITEUR') or is_granted('ROLE_DIRECTEUR')%}#}
+{#                    <th>DateFrom-DateTo</th>#}
+{#                {% endif %}#}
+
+
+{#                <th>Location</th>#}
+{#                {% if is_granted('ROLE_DIRECTEUR')  or is_granted('ROLE_VISITEUR') %}#}
+{#                <th>Company&amp reference person 1#}
+{#                    (name &amp contact details)</th>#}
+{#{% endif %}#}
+{#                <th>Position</th>#}
+{#                <th>Description</th>#}
+
+{#                {% if is_granted('ROLE_DIRECTEUR') %}#}
+{#                <th>actions</th>#}
+{#                {% endif %}#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for experience in experiences %}#}
+{#            <tr>#}
+{#                <td>{{ experience.id }}</td>#}
+{#                {% if is_granted('ROLE_VISITEUR') or is_granted('ROLE_DIRECTEUR') %}#}
+{#                    <td><p>{{ experience.DateFrom ? experience.DateFrom|date('Y-m-d') : '' }} <strong>to</strong> {{ experience.DateTo ? experience.DateTo|date('Y-m-d') : '' }}</p></td>#}
+
+{#                {% endif %}#}
+
+{#                <td>{{ experience.Location }}</td>#}
+{#                {% if is_granted('ROLE_DIRECTEUR')  or is_granted('ROLE_VISITEUR') %}#}
+{#                <td>{{ experience.societe }}#}
+{#                     <a href="{{experience.lienSociete}}">{{experience.lienSociete}}</a></td>#}
+{#                {% endif %}#}
+{#                <td><h6>{{ experience.position }}</h6></td>#}
+{#                {% if is_granted('ROLE_DIRECTEUR')  or is_granted('ROLE_VISITEUR') %}#}
+
+{#                <td>{{ experience.description }}#}
+{#                    <br/>#}
+{#                 <a href="{{ experience.lienDescription }}"  > {{ experience.lienDescription }}</a></td>#}
+{#                {% endif %}#}
+{#                {% if is_granted('ROLE_DIRECTEUR') %}#}
+{#                <td>#}
+{#                    <a href="{{ path('experience_show', {'id': experience.id}) }}">show</a>#}
+{#                    <a href="{{ path('experience_edit', {'id': experience.id}) }}">edit</a>#}
+{#                    <a href="{{ path('experience_new',{'id':experience.id})}}">Ajouter une nouvelle experience</a>#}
+
+{#                </td>#}
+{#                {% endif %}#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="10">pas d'experiences</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#    {% if is_granted('ROLE_DIRECTEUR') %}#}
+{#    <a href="{{ path('experience_new',{'idDirecteur':app.user.id})}}">Ajouter une nouvelle experience</a>#}
+{#    {% endif %}#}
+
+{#    {% else %}#}
+{#    <h1>Vous n'avez pas le droit de voir cette page</h1>#}
+{#    {% endif %}#}
+{#</div>#}
+{% endblock %}

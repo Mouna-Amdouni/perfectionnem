@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body %}
+
+<!-- Breadcrumb -->
+<div class="col-sm-12" id="breadcrumb">
+{#    <a href="{{ path('home') }}"><span>Accueil</span></a>#}
+
+   
+</div>
+
+<div class="col-xl-12">
+    <h1 class="page-name">Forum</h1>
+    <span>Tous les Forums</span>
+</div>
+
+    {% if is_granted('ROLE_VISITEUR') %}
+    <div class="col-xl-12" id="create-topic">
+        <a href="{{ path("newTopic") }}"><p><b>➕</b> Créer un nouveau Forum</p></a>
+    </div>
+    {% endif %}
+
+<div class="col-xl-12 table-responsive text-nowrap">
+    <table class="table table-list" id="topics">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"><a href="#" class="filterLink">Nom du Forum</a></th>
+{#                <th scope="col"><a href="#" title="Order by name" class="filterLink">Auteur</a></th>#}
+                <th scope="col"><a href="#" title="Order by role" class="filterLink">Nombre de messages</a></th>
+                <th scope="col"><span class="filterLink">date</span></th>
+
+                {% if is_granted('ROLE_DIRECTEUR') %}
+                <th scope="col"><span class="filterLink">supprimer</span></th>{% endif %}
+                
+            </tr>
+        </head>
+        <tbody>
+            {% for topic in topics %}
+                <tr data-id="{{ topic.id }}" tabindex="0">
+                    <th scope="row">
+                        {% if "ROLE_VISITEUR" in app.user.roles%}
+                            <span class="topic-title">{{ topic.name }} [#{{topic.id}}] </span>
+                        {% endif %}
+                        
+                    </th>
+{#                    <td>#}
+{#                        <p>#}
+{#                            {{ topic.username }}#}
+{#                        </p>#}
+{#                    </td>#}
+                    <td>
+                        <p>
+                            {{ topic.countMessage }}
+                        </p>
+                    </td>
+                    <td>
+                        {{ topic.lastMessage|date('d/m/Y H:i:s') }}
+                    </td>
+                    {% if is_granted('ROLE_DIRECTEUR') %}
+                    <td>
+                        <a href="{{ path('suppforum',{id: topic.id}) }}" class="btn btn-danger">supprimer le Forum</a>
+                    </td> 
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    $('#topics > tbody > tr').click(function() {
+        window.location.href = "forum/topic/" + $(this).data("id");
+	});
+   
+</script>
+{% endblock %}

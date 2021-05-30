@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+{#    <h1 style="text-align: center">Actualités de SLIM</h1>#}
+{#    <div style="width: 2000px" class="container">#}
+{#        <div class="row justify-content-center">#}
+{#            <div class="col-12 col-md-8 col-lg-6 pb-5">#}
+
+
+{#                    #}{#    class="bg-light border-bottom"#}
+
+
+
+
+{#                    <div  class="bg-light border-bottom"  >#}
+{#                        <h5  style=" text-anchor: middle; ; text-align: center">{{ act.nom }}</h5>#}
+{#                        <br/>   <span  class="badge bg-danger" >crée le {{ act.createdAt ? act.createdAt|date('d-m-y ') : '' }} à#}
+{#                {{ act.createdAt ? act.createdAt|date(' H:i') : '' }}#}
+{#            </span>#}
+{#                        <br/>#}
+{#                        <h7>{{ act.description }}</h7>#}
+{#                    </div>#}
+
+
+{#                    <br/>#}
+{#                <img src=" {{ asset('uploads/images/'  ~ act.image) }}"alt="Awesome Image">#}
+
+
+
+{#</div></div></div>#}
+    <div class="wrapper">
+<h3>{{  act.nom}}</h3>
+                                <br/>   <span  class="badge" >crée le {{ act.createdAt ? act.createdAt|date('d-m-y ') : '' }} à
+                        {{ act.createdAt ? act.createdAt|date(' H:i') : '' }}
+                    </span>
+        <h5>  {{ act.sujet }}</h5>
+        <p>{{ act.description }}</p>
+
+
+
+
+
+        <div class="moon">      <img src=" {{ asset('uploads/images/'  ~ act.image) }}" alt="Awesome Image"></div>
+         </div>
+
+
+{% endblock %}

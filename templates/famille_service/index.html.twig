@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilleService index{% endblock %}
+
+{% block body %}
+    <h1>FamilleService index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomFamille</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for famille_service in famille_services %}
+            <tr>
+                <td>{{ famille_service.id }}</td>
+                <td>{{ famille_service.nomFamille }}</td>
+                <td>
+                    <a href="{{ path('famille_service_show', {'id': famille_service.id}) }}">show</a>
+                    <a href="{{ path('famille_service_edit', {'id': famille_service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('famille_service_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,151 @@
+@import url(https://fonts.googleapis.com/css?family=Arbutus+Slab);
+
+$black: #494b50;
+$grey: #62646a;
+$light-grey: rgba($grey, 0.8);
+$red: #b52d2e;
+$cream: #faf4eb;
+$light-red: lighten($red, 40%);
+$light-dark-red: darken($red, 13%);
+$dark-red: desaturate($red, 13%);
+
+$blue: #1b68b2;
+$light-blue: lighten($blue, 40%);
+$light-dark-blue: darken($blue, 13%);
+$dark-blue: desaturate($blue, 13%);
+
+@import url(https://fonts.googleapis.com/css?family=Arbutus+Slab);
+
+body {
+  color: $grey;
+  font-family: 'Arbutus Slab', serif;
+  background-color: $cream;
+}
+
+#h1 {
+  color: #1b68b2;
+  text-align: center;
+
+  font-size: 4.4em;
+  line-height: .6em;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  margin-bottom: .2em;
+  margin-top: 2rem;
+  padding-bottom: 0;
+  text-shadow:
+          0 -2px 0 $light-blue,
+          0 2px 0 $light-dark-blue,
+          1px 0px 0 $dark-blue,
+          3px 3px 0px rgba(0, 0, 0, 0.1),
+          -3px 4px 0px rgba(0, 0, 0, 0.1),
+          2px -2px 0px rgba(0, 0, 0, 0.1),
+          0 1px 3px rgba(0, 0, 0, 0.2),
+          0 3px 5px rgba(0, 0, 0, 0.2),
+          0 5px 10px rgba(0, 0, 0, 0.2),
+          0 10px 10px rgba(0, 0, 0, 0.2),
+          0 20px 20px rgba(0, 0, 0, 0.1),
+          -150px 580px 0 rgba($blue, 0.06);
+  @include rotate(0deg);
+  span.amper {
+    display: block;
+    color: $red;
+    font-size: 1.1em;
+    text-shadow:
+            0 -2px 0 $light-red,
+            0 2px 0 $light-dark-red,
+            1px 0px 0 $dark-red,
+            3px 3px 0px rgba(0, 0, 0, 0.1),
+            -3px 4px 0px rgba(0, 0, 0, 0.1),
+            2px -2px 0px rgba(0, 0, 0, 0.1),
+            0 1px 3px rgba(0, 0, 0, 0.2),
+            0 3px 5px rgba(0, 0, 0, 0.2),
+            0 5px 10px rgba(0, 0, 0, 0.2),
+            0 10px 10px rgba(0, 0, 0, 0.2),
+            0 20px 20px rgba(0, 0, 0, 0.1),
+            -150px 580px 0 rgba($red, 0.06);
+  }
+}
+.author {
+  font-family: caslon, 'adobe Caslon pro', garamond, 'adobe garamond', serif;
+  font-style: italic;
+  font-size: 1.25em;
+  color: $black;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.wrap {
+  width: 500px;
+  margin: 0 auto;
+}
+
+header {
+  margin-top: 10%;
+  &:after {
+    content: "";
+    width: 20%;
+    height: 4px;
+    display: block;
+    background-color: $light-grey;
+    margin: 0 auto;
+    @include border-radius(4px);
+  }
+  &:before {
+    @extend header:after;
+  }
+}
+#content {
+  margin-top: 2.5rem;
+}
+.p {
+  margin-top: .4em;
+  font-size: .78em;
+}
+
+#btn {
+  width: 100%;
+  height:100%;
+  border: 1px solid #333;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  transition: 1s;
+}
+
+#btn::before, #btn::after {
+  position: absolute;
+  background: #eee;
+  z-index: -1;
+  transition: 1s;
+  content: '';
+}
+
+#btn::before {
+  height: 100%;
+  width: 100%;
+}
+
+#btn::after {
+  height:100%;
+  width: 100%;
+}
+
+#btn:hover::before {
+  width: 0px;
+  background: #fff;
+}
+
+#btn:hover::after {
+  height: 0px;
+  background: #fff;
+}
+
+#btn:hover {
+  background: #fff;
+}
+

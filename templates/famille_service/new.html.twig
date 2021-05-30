@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FamilleService{% endblock %}
+
+{% block body %}
+    <h1>Create new FamilleService</h1>
+
+    {{ include('famille_service/_form.html.twig') }}
+
+    <a href="{{ path('famille_service_index') }}">back to list</a>
+{% endblock %}

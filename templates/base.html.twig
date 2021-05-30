@@ -1,0 +1,774 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#    <head>#}
+{#        <meta charset="UTF-8">#}
+{#        <title>{% block title %}Welcome!{% endblock %}</title>#}
+{#        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">#}
+
+{#    </head>#}
+{#    <body>#}
+{#      <h1>hhh</h1>#}
+{#      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>#}
+
+{#    </body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+
+    <link rel="stylesheet"  href="//code.jquery.com/jquery-3.4.1.slim.js" >
+    <link rel="stylesheet"  href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css" >
+    <link  rel="stylesheet"  href="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.js">
+    <link rel="stylesheet"  href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.js" >
+    <link rel="stylesheet"  href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" >
+
+
+
+    <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.slim.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+          <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+
+    <title>
+        {% block title %}
+            {% if title is defined %}{{title}}{% else %}Title{% endif %} | Nom du site
+        {% endblock %}
+    </title>
+    {% block stylesheets %}
+        <style>
+
+            #div1 .item {
+                height: 100vh;
+                position: relative;
+            }
+            #div1 .item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            #div1 .item .cover {
+                padding: 75px 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.6);
+                display: flex;
+                align-items: center;
+            }
+            #div1 .item .cover .header-content {
+                position: relative;
+                padding: 56px;
+                overflow: hidden;
+            }
+            #div1 .item .cover .header-content .line {
+                content: "";
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                position: absolute;
+                border: 9px solid #fff;
+                -webkit-clip-path: polygon(0 0, 60% 0, 36% 100%, 0 100%);
+                clip-path: polygon(0 0, 60% 0, 36% 100%, 0 100%);
+            }
+            #div1 .item .cover .header-content h2 {
+                font-weight: 300;
+                font-size: 35px;
+                color: #fff;
+            }
+            #div1 .item .cover .header-content h1 {
+                font-size: 56px;
+                font-weight: 600;
+                margin: 5px 0 20px;
+                word-spacing: 3px;
+                color: #fff;
+            }
+            #div1 .item .cover .header-content h4 {
+                font-size: 24px;
+                font-weight: 300;
+                line-height: 36px;
+                color: #fff;
+            }
+            #div1 .owl-item.active h1 {
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                animation-name: fadeInDown;
+                animation-delay: 0.3s;
+            }
+            #div1 .owl-item.active h2 {
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                animation-name: fadeInDown;
+                animation-delay: 0.3s;
+            }
+            #div1 .owl-item.active h4 {
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                animation-name: fadeInUp;
+                animation-delay: 0.3s;
+            }
+            #div1 .owl-item.active .line {
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                animation-name: fadeInLeft;
+                animation-delay: 0.3s;
+            }
+            #div1 .owl-nav .owl-prev {
+                position: absolute;
+                left: 15px;
+                top: 43%;
+                opacity: 0;
+                -webkit-transition: all 0.4s ease-out;
+                transition: all 0.4s ease-out;
+                background: rgba(0, 0, 0, 0.5) !important;
+                width: 40px;
+                cursor: pointer;
+                height: 40px;
+                position: absolute;
+                display: block;
+                z-index: 1000;
+                border-radius: 0;
+            }
+            #div1 .owl-nav .owl-prev span {
+                font-size: 1.6875rem;
+                color: #fff;
+            }
+            #div1 .owl-nav .owl-prev:focus {
+                outline: 0;
+            }
+            #div1 .owl-nav .owl-prev:hover {
+                background: #000 !important;
+            }
+            #div1 .owl-nav .owl-next {
+                position: absolute;
+                right: 15px;
+                top: 43%;
+                opacity: 0;
+                -webkit-transition: all 0.4s ease-out;
+                transition: all 0.4s ease-out;
+                background: rgba(0, 0, 0, 0.5) !important;
+                width: 40px;
+                cursor: pointer;
+                height: 40px;
+                position: absolute;
+                display: block;
+                z-index: 1000;
+                border-radius: 0;
+            }
+            #div1 .owl-nav .owl-next span {
+                font-size: 1.6875rem;
+                color: #fff;
+            }
+            #div1 .owl-nav .owl-next:focus {
+                outline: 0;
+            }
+            #div1 .owl-nav .owl-next:hover {
+                background: #000 !important;
+            }
+            #div1:hover .owl-prev {
+                left: 0px;
+                opacity: 1;
+            }
+            #div1:hover .owl-next {
+                right: 0px;
+                opacity: 1;
+            }
+
+            navbar{
+                padding: 0px!important;
+                -webkit-box-shadow: 4px 9px 25px -6px rgba(77,77,77,0.61);
+                -moz-box-shadow: 4px 9px 25px -6px rgba(77,77,77,0.61);
+                box-shadow: 4px 9px 25px -6px rgba(77,77,77,0.61);
+            }
+            ul.dropdown-menu{
+                width: 11vw;
+                border-radius: 0px;
+                font-weight: 400;
+                font-size: 0.9em;
+                line-height: 16px;
+                text-decoration: none;
+                padding: 0px;
+                list-style-type: none;
+                -webkit-animation: mymove 0.5s;
+                animation: mymove 0.5s;
+                background-color: #fff;
+                -webkit-box-shadow: 4px 9px 25px -6px rgba(77,77,77,0.61);
+                -moz-box-shadow: 4px 9px 25px -6px rgba(77,77,77,0.61);
+                box-shadow: 4px 9px 25px -6px rgba(77,77,77,0.61);
+            }
+            li.dropdown:hover ul.dropdown-menu{
+                display: block;
+            }
+
+            .dropdown-menu li:hover a{
+                color: #ec5626;
+            }
+
+            .dropdown-menu li{
+                border-bottom: 1px solid #ccc;
+                padding: 20px;
+                display:block;
+            }
+            .dropdown-menu li a{
+                color: #444;
+                text-decoration: none;
+                text-transform: capitalize;
+            }
+            @keyframes mymove {
+                from {
+                    left:  100px;
+                    height: 0px;
+                    opacity: 0;
+                    border-bottom:0px;
+                }
+                to {
+                    height: auto;
+
+                }
+            }
+
+            .navbar-nav a.nav-link{
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+                padding: 0px !important;
+            }
+            ul.navbar-nav li.nav-item{
+                margin: 0 20px;
+            }
+            ul.navbar-nav .nav-item:after {
+                content: '';
+                display: block;
+                height: 3px;
+                width: 0;
+                transition: width .5s ease, background-color .5s ease;
+            }
+            .navbar-nav .nav-item:hover:after {
+                width: 100%;
+                background:#eb3719;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </style>
+        {# bootstrap #}
+        <script src="/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+        <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {# custom #}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/styleMedia.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/s.scss') }}">
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+
+<body id="{% block body_id %}{% endblock %}">
+
+<div  class="page-wrapper chiller-theme toggled">
+
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+
+        <div  class="sidebar-content">
+            <div class="sidebar-brand">
+                <a href="{{ path('acc') }}">Site Personnel</a>
+                <div id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+                   <div class="sidebar-header">
+                <div class="user-pic" style="width:200px">
+                    <img style="width:90px;height: 80px" class="img-responsive img-rounded" src="data:image/jpeg;base64,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"
+                         alt="User picture">
+                </div>
+                <div class="user-info">
+                    <a href="{{ path('profile') }}">
+          <span class="user-name">SLIM
+
+              <strong>Jerbia</strong>
+          </span></a>
+
+            <!-- sidebar-header  -->
+                    {% if is_granted('ROLE_DIRECTEUR') and not is_granted('ROLE_ADMIN')  %}
+{#                        <span>Completer votre profil</span>#}
+                    <span> <a href="{{ path('Completer',{'idDirecteur':app.user.id})}}">Completer votre profil</a>
+                    </span>
+
+                    {% endif %}
+            <div class="sidebar-search">
+                <div>              {% if not is_granted('ROLE_DIRECTEUR') %}
+
+
+                    <span class="user-role">Consultant</span>
+                    <br/>
+                    <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>En Ligne</span>
+          </span> {% endif %}
+                </div>
+                    <div class="input-group">
+{#                        <label>#}
+{#                            <input type="text" class="form-control search-menu" placeholder="Search...">#}
+{#                        </label>#}
+{#                        <div class="input-group-append">#}
+{#              <span class="input-group-text">#}
+{#                <i class="fa fa-search" aria-hidden="true"></i>#}
+{#              </span>#}
+{#                        </div>#}
+                    </div>
+                </div>
+                </div></div>
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu">
+                        <span>General</span>
+                    </li>
+                    <li  class="sidebar-dropdown">
+{#                        <a href="{{ path('experience_new',{'id':user_id})}}">Ajouter une nouvelle experience</a>#}
+
+                        {% if not is_granted('ROLE_DIRECTEUR') %}
+                        <a href="{{ path('experience_indexV')}}">
+                            {#                            <i class="fa fa-tachometer-alt"></i>#}
+                            {#                            <i class="far fa-lamp-desk"></i>#}
+                            <i class="fas fa-user"></i>
+                            <span>About Slim</span>
+
+{% endif %}
+                            {% if is_granted('ROLE_DIRECTEUR') %}
+                        <a href="{{ path('experience_index')}}">
+                            {#                            <i class="fa fa-tachometer-alt"></i>#}
+                            {#                            <i class="far fa-lamp-desk"></i>#}
+{#                            <i class="fab fa-etsy"></i>#}
+                            <i class="fas fa-user"></i>
+                            <span>About You</span>
+                                <span  class="badge badge-pill badge-warning">gérer</span>
+                            {% endif %}
+                        </a>
+
+                        {#                        <div class="sidebar-submenu">#}
+{#                            <ul>#}
+
+{#                                <li>#}
+{#                                    <a href="#">Dashboard 1#}
+{#                                        <span class="badge badge-pill badge-success">Pro</span>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Dashboard 2</a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Dashboard 3</a>#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+                    </li>
+                    <li class="sidebar-dropdown">
+
+
+                        <a href="{{ path('contactD') }}">
+                            <i class="fa fa-link" aria-hidden="true"></i>
+{#                            <i class="fa fa-shopping-cart"></i>#}
+                            <span>Contact</span>
+                            {% if is_granted('ROLE_DIRECTEUR') %}
+                            <span class="badge badge-pill badge-danger">gérer</span>
+                            {% endif %}
+                        </a>
+
+                    </li>
+                    <li class="sidebar-dropdown">
+                        {% if not is_granted('ROLE_DIRECTEUR') %}
+                        <a href="{{ path('actsUser')}}">
+                            {#                            <i class="fa fa-tachometer-alt"></i>#}
+                            {#                            <i class="far fa-lamp-desk"></i>#}
+                            <i class="fa fa-newspaper-o"></i>
+                            <span>Actualités</span>
+
+                            {% endif %}
+                            {% if is_granted('ROLE_DIRECTEUR') %}
+
+                            <a href="{{ path('acts')}}">
+{#                            <i class="fa fa-camera" aria-hidden="true"></i>#}
+                            <i class="fa fa-newspaper-o"></i>
+                            <span>Actualités</span>
+
+                                <span class="badge badge-pill badge-primary">gérer</span>
+                            {% endif %}
+                        </a>
+                        <div class="sidebar-submenu">
+{#                            <ul>#}
+{#                                <li>#}
+{#                                    <a href="#">General</a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Panels</a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Tables</a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Icons</a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Forms</a>#}
+{#                                </li>#}
+{#                            </ul>#}
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('media_index')}}" >
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                            Medias
+                            {% if is_granted('ROLE_DIRECTEUR') %}
+
+                                <span class="badge badge-pill  badge-secondary">gerer</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a href="#">
+                            <i class="fa fa-suitcase" aria-hidden="true"></i>
+                            <span>Services</span>
+                            {% if is_granted('ROLE_DIRECTEUR') %}
+
+                                <span class="badge badge-pill  badge-dark">gerer</span>
+                            {% endif %}
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a href="{{ path('service_index') }}">Communication</a>
+                                </li>
+                                <li>
+                                    <a href="{{path('service_indexCM') }}">Conseil En Marketing</a>
+                                </li>
+                                <li>
+                                    <a href=" {{ path('servicePAV')}} ">Production AudioVisuel</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+{#                    <li class="sidebar-dropdown">#}
+{#                        <a href="#">#}
+{#                            <i class="fa fa-globe"></i>#}
+{#                            <span>Maps</span>#}
+{#                        </a>#}
+{#                        <div class="sidebar-submenu">#}
+{#                            <ul>#}
+{#                                <li>#}
+{#                                    <a href="#">Google maps</a>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <a href="#">Open street map</a>#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </li>#}
+{#                    <li class="header-menu">#}
+{#                        <span>Extra</span>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">#}
+{#                            <i class="fa fa-book"></i>#}
+{#                            <span>Documentation</span>#}
+{#                            <span class="badge badge-pill badge-primary">Beta</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">#}
+{#                            <i class="fa fa-calendar"></i>#}
+{#                            <span>Calendar</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">#}
+{#                            <i class="fa fa-folder"></i>#}
+{#                            <span>Examples</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#            <!-- sidebar-menu  -->#}
+{#        </div>#}
+        <!-- sidebar-content  -->
+{#        <div class="sidebar-footer">#}
+{#            <a href="#">#}
+{#                <i class="fa fa-bell"></i>#}
+{#                <span class="badge badge-pill badge-warning notification">3</span>#}
+{#            </a>#}
+{#            <a href="#">#}
+{#                <i class="fa fa-envelope"></i>#}
+{#                <span class="badge badge-pill badge-success notification">7</span>#}
+{#            </a>#}
+{#            <a href="#">#}
+{#                <i class="fa fa-cog"></i>#}
+{#                <span class="badge-sonar"></span>#}
+{#            </a>#}
+{#            <a href="#">#}
+{#                <i class="fa fa-power-off"></i>#}
+{#            </a>#}
+{#        </div>#}
+    </nav>
+
+    <!-- sidebar-wrapper  -->
+
+    <!-- page-content" -->
+
+
+
+{% block header %}
+
+{#    <header id="header" class="bck1 border-bottom">#}
+{#        <div class="container">#}
+{#            <h6  ><div class="deconstructed">#}
+{#                   SLIM JERBIA#}
+{#                    <div>SLIM JERBIA</div>#}
+
+{#                    <div>SLIM JERBIA</div>#}
+{#                    <div>SLIM JERBIA</div>                    <div>SLIM JERBIA</div>#}
+
+{#                </div></h6>#}
+{#        </div>#}
+{#    </header>#}
+    <br/><br/>
+{% endblock %}
+
+{% block nav %}
+
+    <nav  id="main-nav" class="container navbar navbar-expand-lg navbar-light bg-light border rounded mb-3">
+        <ul class="navbar-nav">
+{#            <div class="container-fluid">#}
+{#                <li class="nav-item">#}
+
+{#                    <a class="navbar-brand" href="{{ path('media_index')}}" >#}
+{#                        <p style="margin-right: 40px">#}
+{#                            Voir slim sur Les Medias#}
+{#                        </p>#}
+{#                    </a>#}
+{#                </li>#}
+{#</div>#}
+{#            <li class="nav-item {% if mainNavHome is defined %}active{% endif %}">#}
+{#                <a class="navbar-brand" href="{{ path('media_index')}}" >#}
+{#                    <p style="margin-left: 400px">#}
+{#                        Voir slim sur Les Medias#}
+{#                    </p>#}
+{#                </a>            </li>#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('staff_management') }}">Espace Administrateur</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+{#                    <a class="nav-link" href="{{path('app_admin_homepage_index')}}">Espace admin</a>#}
+                </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if is_granted('ROLE_VISITEUR') or is_granted('ROLE_DIRECTEUR') or is_granted('ROLE_ADMIN') %}
+
+                <li class="nav-item">
+
+                    <a href="{{ path('security_logout')}}" id="logout-link">
+                        <p >
+                               Se déconnecter
+                        </p>
+                    </a>
+                </li>
+
+            {% else %}
+{#                <nav class="navbar navbar-light bg-light">#}
+{#                    <div class="container-fluid">#}
+{#                        <li class="nav-item">#}
+
+{#                            <a class="navbar-brand" href="{{ path('media_index')}}" >#}
+{#                                <p style="margin-right: 40px">#}
+{#                                   Voir slim sur Les Medias#}
+{#                                </p>#}
+{#                            </a>#}
+{#                        </li></div></nav>#}
+                <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{path('login')}}">Contacter Slim </a>
+                </li>
+                <li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+{#                    <a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>#}
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{#    <nav  class="navbar navbar-expand-sm bg-light navbar-light">#}
+{#        <ul style="margin-left: 20%;width: 100%"class="navbar-nav">#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="{{ path('media_index')}}" >#}
+
+{#                        Medias#}
+
+{#                </a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">About</a></a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Portfilo</a>#}
+{#            </li>#}
+
+{#            <li class="nav-item dropdown"  >#}
+{#                <a class="nav-link " data-toggle="dropdown" href="#">Services</a>#}
+{#                <ul class="dropdown-menu">#}
+{#                    <li><a href="#">Communication</a></li>#}
+{#                    <li><a href="#">Production Audiovisuel</a></li>#}
+{#                    <li><a href="#">Conseil En Marketing</a></li>#}
+{#                  #}
+{#                </ul>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Contact</a>#}
+{#            </li>#}
+{#        </ul>#}
+{#    </nav>#}
+{% endblock %}
+
+{% block flash %}
+    {% for flash_message in app.session.flashbag.get('success') %}
+        <div class="container alert alert-success" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashbag.get('info') %}
+        <div class="container alert alert-info" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashbag.get('warning') %}
+        <div class="container alert alert-warning" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashbag.get('danger') %}
+        <div class="container alert alert-danger" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+<div class="container bck1 padded">
+    {% block body %}
+
+    {% endblock %}
+</div>
+
+{#{% block footer %}#}
+{#    <footer id="footer" class="bck1 border-top">#}
+
+{#        <div class="container">#}
+{#            <h4>Footer</h4>#}
+{#        </div>#}
+{#    </footer>#}
+{#{% endblock %}#}
+
+{% block javascripts %}
+    <script>
+
+        jQuery(function ($) {
+
+            $(".sidebar-dropdown > a").click(function() {
+                $(".sidebar-submenu").slideUp(200);
+                if (
+                    $(this)
+                        .parent()
+                        .hasClass("active")
+                ) {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                        .parent()
+                        .removeClass("active");
+                } else {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                        .next(".sidebar-submenu")
+                        .slideDown(200);
+                    $(this)
+                        .parent()
+                        .addClass("active");
+                }
+            });
+
+            $("#close-sidebar").click(function() {
+                $(".page-wrapper").removeClass("toggled");
+            });
+            $("#show-sidebar").click(function() {
+                $(".page-wrapper").addClass("toggled");
+            });
+
+
+
+
+        });
+
+
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel();
+        });
+    </script>
+{% endblock %}
+</div>
+</body>
+</html>

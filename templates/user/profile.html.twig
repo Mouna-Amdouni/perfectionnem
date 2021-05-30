@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Profile Card</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Marck+Script">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rakkas">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/styleprofile.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=KoHo" rel="stylesheet">
+</head>
+
+<body>
+{% for u in us %}
+	{% if u.roles == ["ROLE_DIRECTEUR","ROLE_VISITEUR"] %}
+
+
+	<div style="width: 600px" class="container">
+		<div class="logo"></div>
+		<h1> SLIM JERBIA </h1>
+		<h3> Consultant | .... </h3>
+		<p class="bio">
+Date De naissance : {{ u.datenaissance ?  u.datenaissance|date('Y-m-d') : ''  }}
+		</p>
+
+		<p class="bio">
+			Nationalité :{{ u.nationalite }}
+
+		</p><p class="bio">
+Status civil : {{ u.civilStatus }}
+		</p>
+		<div > <p >
+{{ u.bio }}
+			</p></div><p class="bio">
+
+		</p>
+{#		<p class="social">#}
+{#			<a title="Facebook" target="_blank" href="https://www.facebook.com/100006665290943">#}
+{#				<i class=" s-btn fab fa-facebook-f"></i></a>#}
+{#			<a title="Instagram" target="_blank" href="https://www.instagram.com/saifylovezyou">#}
+{#				<i class="s-btn fab fa-instagram"></i></a>#}
+{#			<a title="Twitter" target="_blank" href="https://twitter.com/saifylovezyou">#}
+{#				<i class="s-btn fab fa-twitter"></i></a>#}
+{#			<a title="Codepen" target="_blank" href="https://codepen.io/saify/">#}
+{#				<i class="s-btn fab fa-codepen"></i></a>#}
+{#			<a title="Linkedin" target="_blank" href="https://www.linkedin.com/in/saifuddins/">#}
+{#				<i class="s-btn fab fa-linkedin-in"></i></a>#}
+{#		</p>#}
+	</div>
+	{% endif %}
+
+{% endfor %}
+
+</body>
+
+</html>
+
+
+    {% endblock %}

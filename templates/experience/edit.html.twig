@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Experience{% endblock %}
+
+{% block body %}
+<div style="margin-left: 150px">
+    <h1>Edit Experience</h1>
+    <a href="{{ path('experience_index') }}">back to list</a>
+
+
+    {{ include('experience/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+{#  {{ include('experience/_delete_form.html.twig') }}#}
+</div>
+{% endblock %}

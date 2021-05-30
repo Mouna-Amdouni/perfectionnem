@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Experience index{% endblock %}
+
+{% block body %}
+    {% for experience in experiences %}
+{#    <div class="card text-white bg-dark " style="width: 100%">#}
+{#        <div style=" text-align: center " class="card-header">De {{ experience.DateFrom ? experience.DateFrom|date('Y-m-d') : '' }} à {{ experience.DateTo ? experience.DateTo|date('Y-m-d') : '' }} <br/></div>#}
+
+{#        Location : {{ experience.Location }} <br/>#}
+{#        Societé   : <a href="{{experience.lienSociete}}">{{ experience.societe }}</a><br/>#}
+{#       Position : {{ experience.position }}#}
+{#    <div class="card-body">#}
+
+{#    <p class="card-text"> {{ experience.description }}#}
+
+{#     <a href="{{ experience.lienDescription }}"  > lien Description </a>#}
+{#     </p></div></div>#}
+
+{#<br/><br/>#}
+<div class="bg-light border-bottom" style="width: 100% ;border-radius:10% ">
+   <br/> <p style="margin-left: 20px">   De {{ experience.DateFrom ? experience.DateFrom|date('Y-m-d') : '' }} à {{ experience.DateTo ? experience.DateTo|date('Y-m-d') : '' }}
+        <br/> Location : {{ experience.Location }}
+    <br/>
+        Societé   : <a href="{{experience.lienSociete}}">{{ experience.societe }}</a><br/>
+        {{ experience.description }}<br/>
+        <a href="{{ experience.lienDescription }}"  > lien Description </a>
+
+
+    </p>
+</div>
+        <br/>
+
+
+
+    {% endfor %}
+{% endblock %}
